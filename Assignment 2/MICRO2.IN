@@ -1,0 +1,10 @@
+begin
+read (A, BB);
+X:= A + BB;  -- comment
+Y := A * BB;
+write (A, BB, X, Y);
+X := A - 5;
+write (A, 5, X);
+X := BB - 5;
+write (BB, 5, X);
+end

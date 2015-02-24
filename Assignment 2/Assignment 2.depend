@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1424708886 source:c:\users\faye\onedrive\documents\language translation\assignments\assignment 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	"header.h"
+	"globals.h"
+
+1424708861 c:\users\faye\onedrive\documents\language translation\assignments\assignment 2\header.h
+
+1424474109 c:\users\faye\onedrive\documents\language translation\assignments\assignment 2\globals.h
+
