@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include "header.h"
 #include "globals.h"
+#include "scanner.h"
 
 /*CSC 460 - Language Translation
 Group 2 - Faye Bickerton, Zach Couch, Jared Sheppard
@@ -188,10 +189,11 @@ FILE *GetOutputFile(int arg)
 {
     char p[BUFFER_LEGNTH];
     FILE *outFile;
-    char *backup_file_name;
+    char backup_file_name[BUFFER_LEGNTH];
     char filename[BUFFER_LEGNTH];
     memset(p,0,sizeof(p));
     memset(filename,0,sizeof(filename));
+    memset(backup_file_name,0,sizeof(backup_file_name));
 
     if(arg <= 2)
     {
@@ -219,7 +221,8 @@ FILE *GetOutputFile(int arg)
     {
         // back up file here
         printf("Backing up old output file.\n");
-        backup_file_name = strcat(filename, ".old");
+        strcpy(backup_file_name,filename);
+        strcat(backup_file_name, ".old");
         if( access(backup_file_name, F_OK) != -1 )
         {
             printf("Removing old backup.\n");
@@ -241,7 +244,7 @@ int Init(int argc, char *argv[])
     input_file_name = NULL;
     output_file_name = NULL;
 
-    char copyChar;
+    //char copyChar;
 
 
     printf(argv[0]);
@@ -284,19 +287,17 @@ int Init(int argc, char *argv[])
 
 
     }
-    return 0;
+    return 1;
 }
 
 void SystemGoal()
 {
-    // this copies one file to another
-    printf("Copying Files\n");
-    copyChar = fgetc(inFile);
-    while (copyChar != EOF)
-    {
-        fputc(copyChar, outFile);
-        copyChar = fgetc(inFile);
-    }
+    printf("Scanning for tokens.");
+    Token response;
+    do{
+        response = Scanner();
+    } while (response != SCANEOF);
+
 }
 
 void WrapUp()
@@ -305,56 +306,14 @@ void WrapUp()
     if ( outFile != NULL ) fclose(outFile);
 }
 
-Token Scanner()
-{
-    char s;
-    Token token;
-    char p[BUFFER_LEGNTH];
-    memset(p,0,sizeof(p));
-
-    s = peek();
-    while ( s == " " || s == '\t')
-    {
-        s = peek();
-    }
-    if ( s == '\n' )
-    {
-        //TODO Handle new line
-        s = peek();
-    }
-    if(s == EOF)
-    {
-        token SCANEOF;
-    }
-    else
-    {
-        if ( isdigit(s) )
-        {
-            ScanDigits();
-            token = INTLITERAL;
-        }
-        if ( isalpha(s) )
-        {
-            while (isalnum(s))
-            {
-
-            }
-        }
-    }
-
-}
-
-char peek()
-{
-    return fgetc(inFile);
-}
 
 
 int main(int argc, char *argv[])
 {
-    Init(argc, argv);
-    SystemGoal();
-    WrapUp();
+    if(Init(argc, argv)) {
+        SystemGoal();
+        WrapUp();
+    }
     system("PAUSE");
     return 0;
 }

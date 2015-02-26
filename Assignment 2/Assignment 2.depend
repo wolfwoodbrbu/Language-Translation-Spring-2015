@@ -11,3 +11,33 @@
 
 1424474109 c:\users\faye\onedrive\documents\language translation\assignments\assignment 2\globals.h
 
+1424965508 source:c:\users\faye\onedrive\documents\language translation\assignments\language-translation-spring-2015\assignment 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<ctype.h>
+	"header.h"
+	"globals.h"
+	"scanner.h"
+
+1424963885 c:\users\faye\onedrive\documents\language translation\assignments\language-translation-spring-2015\assignment 2\header.h
+
+1424964836 c:\users\faye\onedrive\documents\language translation\assignments\language-translation-spring-2015\assignment 2\globals.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<ctype.h>
+
+1424964689 c:\users\faye\onedrive\documents\language translation\assignments\language-translation-spring-2015\assignment 2\scanner.h
+
+1424964842 source:c:\users\faye\onedrive\documents\language translation\assignments\language-translation-spring-2015\assignment 2\scanner.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<ctype.h>
+	"globals.h"
+	"header.h"
+

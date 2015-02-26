@@ -18,5 +18,7 @@ typedef enum
     PLUSOP,
     MINUSOP,
     SCANEOF,
-    ERROR
+    ERROR,
+    BLANKSPACE
 } Token;
+
