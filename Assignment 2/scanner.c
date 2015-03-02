@@ -7,23 +7,6 @@
 #include "header.h"
 Token Scanner(void)
 {
-    /*declare tokens
-    int BEGIN = 1;
-    int END = 2;
-    int READ = 3;
-    int WRITE = 4;
-    int ID = 5;
-    int INTLITERAL = 6;
-    int LPAREN = 7;
-    int RPAREN = 8;
-    int SEMI = 9;
-    int COMMA = 10;
-    int ASSIGNOP = 11;
-    int PLUSOP = 12;
-    int MINUSOP = 13;
-    int SCANEOF = 14;
-    int ERROR = 15;
-    */
 
     int token_operation = 0;
     Token tokenReturned = BLANKSPACE;
@@ -245,12 +228,17 @@ Token Scanner(void)
                     inpLine = fgetc(inFile);
                     sprintf(buffer, "%c", inpLine);
                     if(inpLine != '\n' && inpLine != EOF)
+                    {
                         strcat(lineBuffer, buffer);
+                    }
                     else
+                    {
                         ungetc(inpLine, inFile);
+                    }
+
 
                 }
-                while (inpLine != '\n' || inpLine != EOF);
+                while (inpLine != '\n' && inpLine != EOF);
             }
             else
             {

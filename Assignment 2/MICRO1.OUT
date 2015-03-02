@@ -1,7 +1,0 @@
-begin
-read (BB);
-read (A);
-a:= BB - 314 + A;  -- comment
---comment 2
-write (a, BB, A);
-end
